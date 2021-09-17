@@ -34,6 +34,46 @@
       - A router is the most common network device for connecting different networks together utilizing the OSI model's Layer 3 logical network information.
       - The router uses software programming for decision making as compared to the switch's use of an ASIC chip. The router uses this programing to keep track of differenct networks and what it considers to be the best possible route to reach those networks.
       - A router can communicate with both local and no-local network devices.
+  - **Security Devices**
+    - Firewall
+      - A firewall can be placed on routers or hosts(software based) or can be its own device.
+      - It runctions at multiple layers of the OSI model(specifically at layers 2,3,4 and 7)
+      - It blocks packets from entering or leaving the network:
+        - Via stateless inspecion: the firewall will examine every packet against a set of rules. Once the packet matches a rule, the rule is enforced, and the specified action is taken.
+        - Via statefull inspection: the firewall will only examine the state of the connection between networks. Spefically, when a connection is made from an internal network to an external network, the firewall will not examine any packets returning from the external connection. As a general rule, external connections are not allowed to be initiated with the internal network.
+      - It is the first line of defense in protecting the internal network from outside threats(consider it the police force of the network)
+    - Intrusion detection system (IDS)
+      - An IDS is a passive system designed to identify when a network breach or attack against the network is occuring(Usually designed to inform a network administrator when a breach or attack has occcurred through log files, SMS, and/or an email notification)
+      - An IDS cannot prevent or stop a breach or attack on its own.
+      - It receives a copy of all traffic and evaluates it against a set of standards.
+        - Signature based: evaluates network traffic for known malware or attack signatures.
+        - Anomaly based: evaluates network traffic for suspicious changes.
+        - Policy based: evaluates network traffic against a specific declared security policy.
+      - May be deployed at the host level(Host-base intrusion detection system (HIDS))
+    - Intrusion prevention system (IPS)
+      - An IPS is an active system designed stop a breach or attack from succeeding in damaging the network
+        - Usually designed to perform an action or set of actions to stop the malicious activity.
+        - will inform a network administrator through the use of log files, SMS, and/or email notification.
+      - All traffic on the network segment flows throught the IPS to either enter or leave the segment(Like the IDS, all traffic is evaluated against the set of standards)
+      - The best placement on the network is between a router(with a firewall) and the destination network segment
+      - It is programmed to make an active reponse to the situation
+        - Block the offending IP address
+        - Close down the vulerable interface
+        - Terminate the network session
+        - Redirect the attack
+        - Plus more
+    - Virtual private network(VPN)
+      - A VPN concentrator will allow for many more secure VPN connections to a network.
+  - **Optimization and performance devices**
+    - Load balancer
+      - A load balancer may also be called a content switch or content filter
+      - A network applicance that is used to load balnce between multiple hosts that contain the same data-spreading out the workload for greater efficiency(Commonly used to distribute the requests (workload) to a server farm among the various servers, helping to ensure that no single server gets overloaded)
+    - Proxy server
+      - A proxy server is an appliance that requests resources on befalf of client machines
+      - It is often used to retrieve resources from outside untrustred networks on befalf of the requesting client
+      - It hides and protectes the requesting client
+      - It can also be utilized to filter allowed content
+      - It can increase network perormance by caching commonly requested Web pages.
 2. Networking services and applications
 3. DHCP in the network
 4. Introducing Network Address Tranlation(NAT)
