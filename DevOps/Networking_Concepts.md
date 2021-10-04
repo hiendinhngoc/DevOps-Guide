@@ -75,7 +75,90 @@
       - It can also be utilized to filter allowed content
       - It can increase network perormance by caching commonly requested Web pages.
 2. Networking services and applications
+  - **The basics of the virtual private network**
+    - Definition: VPN is used by remote hosts to access a private network through an encrypted tunnel through a public network.
+    - VPN types:
+      - the site-to-site VPN: allows a remote site's network to connect to the mainsite's network and be seen as a local network segment.
+      - remote-access VPN(host-to-site VPN): allows to select remote users to connect to the local network
+      - host-to-host VPN (SSL VPN): allows a secure connection between two systems without the use of VPN client software.
+  - **Protocols used by the virtual private network**
+    - Internet Protocol security (IPsec)
+      - Works at Layer 3 of the OSI model and above
+      - The most common suite of protocals to secure a VPN conection.
+      - Can be used with the Authentication Header (AH) protocol(AH only offers authentication services, no encryption.)
+      - Can be used with Encapsulating Security Payload (ESP)
+      - Both AH and ESP will operate in once of two modes: in transport mode(between two devices) or in tunnel mode(between two endpoints)
+      - IPSec implements Internet Security Association and Key Management by default.
+    - Generic Routing Encapsulation (GRE)
+      - GRE is a tunneling protocal that is capable ofencapsulating a wide variety of network layer protocols
+      - It is often used to crate a sub-tunnel within a n IPSec connection
+    - Point to Point tunneling protocol
+      - An older VPN techonlogy that supports dial-up VPN connections. On its own, it lacked native security features.Nuôi dưỡng đứa trẻ biết tư duypro
+    - Transport Layer Security (TLS) protocol
+      - TLS is a cryptographic protocol used to create a secure encrypted connection between two end devices or applications.
+      - TLS has largely replaced the Secure Socket Layer protocol.
+      - It workes at Layer 5 and above of the OSI model
+      - The most common use is in creating a secure encrypted Internet session (SSL VPN)
+    - Secure Socket Layer (SSL) protocol
+      - SSL is an older cryptographic protocol that is very similar to TLS
+      - The most comon use is in Internet transactions.
+      - Due to issues with earlier versions of the protocol, it has largely been replaced by TLS protocol.
+  - **Network access services**
+    - Network interface controller (NIC)
+      - It can also be called a network interface card
+      - The NIC is how a device connects to a network
+      - It works at two layer of the OSI model(1 and 2)
+      - Most modern computers come with at least one built in Ethernet NIC
+      - Routers and other network devices may use separate modeles that can be inserted into the device to provide the proper NIC for the type of media they are connecting to and the networking protocol that is being used.
+    - RADIUS(Remote Authentication Dial In User Service)
+      - a remote access service that is used to authenticate remote users and grant them access to authorized network resources.
+      - It is a popular AAA (Authentication, Authorization and Accounting) protocol used to help ensure that only authenticated end users are using the network resources they are authorized to used
+      - Only the requestor's (the end user's) password is encrypted.
+    - TACACS+ (Terminal Access Controller Acess-Control System Plus)
+      - A remote access service that is used to authenticate remote devices and grant them access to authorized network resources
+      - It is a popular AAA protocol used ot help ensure that only authticated remote network devices are using the network resources they are authorized to use.
+      - All transmissions between devices are encrypted.
+  - **Other services and applications**
+    - RAS (Remote Access Services): Not a protocol but a roadmap
+    - Web services: Creating a means of cross communication
+    - Unified voice services: Creating better voice communication systems
 3. DHCP in the network
+  - **Static vs dynamic IP addressing**
+    - How does a compuer know what its IP configuration is?
+      - Most likely, a computer received its IP configuration from a DHCP(dynamic host configuration protocol) server. Not only did the server give the PC and IP address, but it also told the PC where the default gateway was - and more than likely - how to find a DNS server
+      - A computer will receive its IP configuration in one of two ways, statically (mannually set) or dynamically (through a service like DHCP). Static address assignment works fine for very small and stable networks, but quickly becomes unwieldy and error prone as the network grows.
+    - Static IP addressing
+      - the admin assigns an IP number and subnet mask to each nost in the network.
+      - the admin assigns a default gateway location and DNS server location to each host in the network
+      - each time a change is made each IP config on each host must be updated.
+    - Dynamic IP addressing
+      - The admin confure a DHCP server to handle the assigning process, which automates the process.
+  - **How DHCP works**
+    - Typical DHCP process
+      - Upon boot up, a PC that is configured to request an IP configuration sends a DHCP discovery packet.
+      - The DHCP server receives the discovery packet and responds with and offer packet.
+      - The computer receives the offer packet from the DHCP server and returns a request packet to the DHCP
+      - Once the DHCP server receives the request packet, it sends back an acknowledgement packet, the PC changes its IP configuration to reflect the information received.
+  - **Components and processes of DHCP**
+    - Ports used
+      - PC sends discovery packet to 255.255.255.255:67
+      - DHCP sends offer packet to the PC's MAC address on port 68
+    - Address scope
+      - Admin configures the IP adress range with one that is available to be handed out.
+    - Address reservations
+      - Admin reserves specific IP addresses to be handed out to specific MAC addresses. These are used for devices that should always have the same IP address
+      - allows for these addreses to be changed from a central location instead of having to log in to each device separately.
+    - Leases
+      - Configuration parameters are only good for a specified amount of time
+      - Leases are configured by the admin
+    - Options
+      - Default gateway location
+      - DNS server addresses
+      - Time server addresses
+      - Many additional options
+    - Preferred IP configuration
+      - a Pc can have a preferred IP address
+      - the admin can configure the DHCP server to either honor the preference or ignore it.
 4. Introducing Network Address Tranlation(NAT)
 5. WAN technologies
 6. Network cabling
